@@ -88,6 +88,7 @@ module.exports = function () {
 						files = files.filter( function ( file ) { return /-foo$/.test( file ); });
 
 						sander.readdir( '.gobble', files[0] ).then( function ( files ) {
+							files = files.filter( function ( file ) { return file.indexOf( '.cache' ) === -1; });
 							assert.deepEqual( files, [ '2' ] );
 							done();
 						});
